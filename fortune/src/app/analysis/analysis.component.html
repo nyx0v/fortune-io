@@ -1,0 +1,39 @@
+<li class="list-group-item">
+    <div class="row">
+        <div class="list-text col mt-1"><a href="#" style="text-decoration: none;color: black;">{{analysis.name}}</a></div>
+        <button class="btn btn-primary me-2 col-1" (click)="onView()">View</button>
+        <button class="btn btn-success me-2 col-1"  data-bs-toggle="modal" [attr.data-bs-target]="modalid" >Modify</button>
+        <button class="btn btn-danger col-1" (click)="onDelete()">Delete</button>
+
+    </div>
+</li>
+
+<div class="modal fade" [id]="id" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="addModalLabel">Add new analysis</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-floating mb-3">
+                <input type="text" id="floatingName" class="form-control" [(ngModel)]="analysis.name">
+                <label for="floatingName">Name</label>
+
+            </div>
+            <div class="form mb-3">
+                <label for="features-choice">Choose features to analyse :</label>
+               
+                  <app-field *ngFor="let field of fields" [field]="field"></app-field>
+            </div>
+            
+            
+        
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onModify()">Save</button>
+        </div>
+    </div>
+    </div>
+</div>

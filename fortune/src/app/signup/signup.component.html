@@ -1,0 +1,28 @@
+
+    <div class="container">
+        <h3 class="display-3 text-center mb-3">Sign up</h3>
+        <div class="form-floating mb-3">
+            <input type="email" id="floatingEmail" class="form-control" [(ngModel)] = "username">
+            <label for="floatingEmail">Username</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <input type="password" id="floatingPass" class="form-control" [(ngModel)] = "password">
+            <label for="floatingPass">Password</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" id="floatingPassConf" class="form-control" [(ngModel)] = "confirmation" (change)="passwordMissmatch()">
+            <label for="floatingPassConf">Password Confirmation</label>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success text-center" (click)="onSignupClick()">Sign up</button>
+        </div>
+
+        <div class="alert alert-warning" role="alert" [style.visibility]="confirmationError ? 'visible' : 'hidden'">
+            Password and Confirmation Missmatch
+        </div>
+        <div class="alert alert-success" role="alert" [style.visibility]="success ? 'visible' : 'hidden'">
+            Signed up successfully
+        </div>
+        
+    </div>

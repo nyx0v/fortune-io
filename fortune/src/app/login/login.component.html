@@ -1,0 +1,21 @@
+
+    <div class="container ">
+        <h3 class="display-3 text-center mb-3">Login</h3>
+        <div class="form-floating mb-3">
+            <input type="email" id="floatingEmail" class="form-control" [(ngModel)]="username">
+            <label for="floatingName">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" id="floatingPass" class="form-control" [(ngModel)]="password">
+            <label for="floatingPass">Password</label>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success text-center" (click)="onLoginClicked()">Login</button>
+        </div>
+        <div class="alert alert-danger" role="alert" [style.visibility]="loginError ? 'visible' : 'hidden'">
+            Wrong Password or Username
+        </div>
+        <div class="alert alert-success" role="alert" [style.visibility]="success ? 'visible' : 'hidden'">
+            Logged in successfully
+        </div>
+    </div>

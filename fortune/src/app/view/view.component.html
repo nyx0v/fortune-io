@@ -1,0 +1,104 @@
+<app-navbar></app-navbar>
+<div class="row">
+  <p class="h1 text-center" style="margin-bottom: 80px">🔮 Fortune 🔮</p>
+  <div class="col-4">
+    <p class="h5">Please choose the X Axis</p>
+
+    <div class="form-check" *ngFor="let field of fields">
+      <input class="form-check-input" type="radio" name="xAxisChoice"  [id]="field" (change)="onChangeXAxis($event)">
+      <label class="form-check-label" [for]="field">
+        {{field}}
+      </label>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <p class="h5">Please choose the Y Axis</p>
+
+    <div class="form-check" *ngFor="let field of fields">
+      <input class="form-check-input" type="radio" name="yAxisChoice"  [id]="field" (change)="onChangeYAxis($event)">
+      <label class="form-check-label" [for]="field">
+        {{field}}
+      </label>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <p class="h5">Please choose the type of chart</p>
+
+    <div class="form-check" *ngFor="let chart of chartTypes">
+      <input class="form-check-input"  type="radio" name="chartTypeChoice" [id]="chart" (change)="onChangeChartType($event)">
+      <label class="form-check-label" [for]="chart">
+        {{chart}}
+      </label>
+    </div>
+  </div>
+
+</div>
+
+
+<p class="h5 text-center">Chart:</p>
+
+<app-chart [data]="data" [xAxis]="xAxis" [yAxis]="yAxis" [chartType]="chartTypeChoice" style="margin-bottom: 80px"></app-chart>
+
+<p class="h5 text-center">Your data:</p>
+<div class="text-center">
+  <button class="btn btn-success text-center" (click)="onViewDataToggle()" >Show/Hide</button>
+</div>
+
+<table *ngIf="viewdata" class="table table-striped" >
+  <thead>
+    <tr>
+      <th scope="row" *ngFor="let field of fields">{{field}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of data">
+      <td *ngFor="let field of fields">{{entry[field]}}</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<div class="row" style="margin-top: 80px">
+  <div class="col-1"></div>
+  <div class="col-5">
+    <p class="h5">Please choose a feature of your data:</p>
+
+    <div class="form-check" *ngFor="let field of fields">
+      <input class="form-check-input" type="radio" name="fieldChoice" [id]="field" (change)="onChangeRadio($event)">
+      <label class="form-check-label" [for]="field">
+        {{field}}
+      </label>
+    </div>
+  </div>
+
+  <div class="col-5">
+    <p class="h5">Please choose type of the feature:</p>
+
+    <div class="form-check" *ngFor="let datatype of datatypes">
+      <input class="form-check-input" type="radio" name="fieldTypeChoice" [id]="datatype" (change)="onChangeRadio($event)">
+      <label class="form-check-label" [for]="datatype">
+        {{datatype}}
+      </label>
+    </div>
+  </div>
+
+</div>
+
+
+<p class="h5 text-center" style="margin-top: 80px">Statistics : </p>
+
+
+<table class="table table-striped">
+  
+  <tbody>
+    <tr *ngFor="let statsEntry of statsHeader">
+      <th>{{statsEntry}}</th>
+      <td >{{stats[statsEntry]}}</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+

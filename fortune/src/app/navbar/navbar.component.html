@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8ee404">
+    <div class="container-fluid">
+            <a class="navbar-brand"  href="#">🔮 Fortune</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item me-3">
+                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link " href="/about">About</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="/features">Features</a>
+                    </li>
+                    <li class="nav-item me-3" *ngIf="!loggedin">
+                        <a class="btn btn-success me-2" href="/auth" type="button" >Sign up / Login</a>
+                    </li>
+
+                    <li class="nav-item me-3" *ngIf="loggedin">
+                        <button class="btn btn-primary me-2" type="button" (click)="onGotoDashboard()">Dashboard</button>
+                    </li>
+                    <li class="nav-item me-3" *ngIf="loggedin">
+                        <button class="btn btn-danger me-2" type="button" (click)="onLogout()">Logout</button>
+                    </li>
+                    
+                </ul>
+            </div>
+  
+      
+    </div>
+  </nav>

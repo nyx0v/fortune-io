@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row title">
+        <h1 class="display-1">Projects</h1>
+    </div>
+    <div class="row projects justify-content-end">
+        <div class="col-1 ">
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">+ Add</button>
+        </div>
+        
+    </div>
+    <!-- Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="addModalLabel">Add new project</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="form-floating mb-3">
+                  <input type="text" id="floatingName" class="form-control" [(ngModel)]="new_name">
+                  <label for="floatingName">Name</label>
+
+              </div>
+              <div class="form mb-3">
+                  <input type="file" id="floatingFile" class="form-control" (change)="onChange($event)">
+              </div>
+              <small>Please insert .csv data for the project (you can modify it later)</small>
+              
+          
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addProject()">Save</button>
+          </div>
+      </div>
+      </div>
+  </div>
+
+  
+
+
+    <div class="row mt-3">
+      <ul class="list-group ">
+
+        <div class="alert alert-warning" role="alert" [style.visibility]="notFoundError ? 'visible' : 'hidden'">
+            Oups! Il parait que vous n'avez pas encore créer de projets
+        </div>
+          
+          <app-project *ngFor="let project of P;" [project]="project"></app-project>
+          
+        </ul>
+    </div>
+</div>

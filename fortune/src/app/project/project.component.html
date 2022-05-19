@@ -1,0 +1,37 @@
+<li class="list-group-item">
+
+
+    <div class="row">
+        <div class="list-text col mt-1"><a [href]="linktoanalyses" style="text-decoration: none;color: black;">{{project.name}}</a></div>
+        <button class="btn btn-success me-2 col-1"  data-bs-toggle="modal" [attr.data-bs-target]="html_id">Modifier</button>
+        <button class="btn btn-danger col-1"(click)="handleSupprimer()">Supprimer</button>
+
+    </div>
+</li>
+
+<div class="modal fade" [id]="id" tabindex="-1" aria-labelledby="modifyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="modifyModalLabel">Modify project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-floating mb-3">
+                <input type="text" id="floatingName" class="form-control" [(ngModel)]="project.name">
+                <label for="floatingName">Name</label>
+
+            </div>
+            <div class="form mb-3">
+                <input type="file" id="floatingFile" class="form-control" (change)="onChange($event)">
+            </div>
+            <small>Please insert .csv data for the project (you can modify it later)</small>
+            
+        
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="handleModifier()">Save</button>
+        </div>
+    </div>
+    </div>
