@@ -17,4 +17,4 @@ Web application for data analysis and visualisation based on data provided by us
 		
 # General use case
 
-![alt General use case](https://github.com/nyx0v/fortune-io/blob/main/general_use_case-fortune.png)
+![alt General use case](https://github.com/nyx0v/fortune-io/blob/master/general_use_case-fortune.png)
