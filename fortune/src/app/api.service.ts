@@ -12,7 +12,9 @@ const apiUrl = 'http://localhost:1337/api'
 })
 export class ApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log(apiUrl);
+   }
 
   signup(username: string, password: string) {
     return this.http.post(apiUrl+'/users', {username: username, password: password});

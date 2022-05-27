@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+       fortune-api:
+           container_name: fortune-api
+           image: fortune-api
+           restart: always
+           build: ./server
+           ports:
+             - "1337:1337"
+           environment:
+             PORT: 1337
+             MONGODB_URI: mongodb://mongo_db:27017/fortune
+             JWTSECRET: 13378008
+             DEBUGGING: false
+
+           depends_on: 
+             - mongo
+       mongo_db:
+             container_name: mongo
+             image: mongo
+             restart: always
+             volumes:
+               - mongo_db:/data/db
+             ports:
+               - '27018:27017'
+       fortune: 
+             container_name: fortune
+             restart: always
+             build: ./fortune
+             ports: 
+               - 80:4200
+            
+             depends_on: 
+               - fortune-api
+volumes:
+      mongo_db: {}
